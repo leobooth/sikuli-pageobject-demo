@@ -1,4 +1,4 @@
-package qa.testing.windows.calculator;
+package qa.testing.tests.calculator;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
