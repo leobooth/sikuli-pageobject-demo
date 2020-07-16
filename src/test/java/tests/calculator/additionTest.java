@@ -16,6 +16,7 @@ public class additionTest {
 
   // TODO: call page methods from Cucumber step definitions
   // TODO: convert project to JUnit 5 or TestNG to get more test setup methods and assertions?
+  // TODO: use WinAppDriver methods (more reliable) to manage app instead of Sikuli?
   private static App calculatorApp;
 
   @BeforeClass
@@ -23,9 +24,9 @@ public class additionTest {
     calculatorApp = App.open("c://Windows//System32//calc.exe");
   }
 
-  @AfterClass
+  @After
   public static void teardownAdditionTest() {
-    calculatorApp.close();
+    calculatorApp.close(); //TODO: use WinAppDriver to open and close the app?
   }
 
   @Test

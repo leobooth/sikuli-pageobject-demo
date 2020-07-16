@@ -19,4 +19,7 @@ public class SikuliWindow extends Region {
   public SikuliElement getWindow() {
     return this.window;
   }
+
+  //TODO: add functions to minimize, maximize, close window
+  // may need to use WinAppDriver functions for these
 }
