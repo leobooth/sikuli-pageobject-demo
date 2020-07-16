@@ -6,10 +6,10 @@ import resources.SikuliPage;
 
 public class CalculatorPage extends SikuliPage {
 
-  SikuliElement button1 = new SikuliElement("calculator/images/ui/button_1.png");
-  SikuliElement button2 = new SikuliElement("calculator/images/ui/button_2.png");
-  SikuliElement buttonPlus = new SikuliElement("calculator/images/ui/button_plus.png");
-  SikuliElement buttonEquals = new SikuliElement("calculator/images/ui/button_equals.png");
+  SikuliElement button1 = new SikuliElement("calculator/images/ui/button_1.png", "button 1");
+  SikuliElement button2 = new SikuliElement("calculator/images/ui/button_2.png", "button 2");
+  SikuliElement buttonPlus = new SikuliElement("calculator/images/ui/button_plus.png", "plus button");
+  SikuliElement buttonEquals = new SikuliElement("calculator/images/ui/button_equals.png", "equals button");
 
   private SikuliElement getButton(int numberButton) throws SikuliException {
     return getButton(Integer.toString(numberButton));
@@ -46,9 +46,5 @@ public class CalculatorPage extends SikuliPage {
   public void clickButton(String button) throws SikuliException {
     clickElement(getButton(button));
     System.out.println("clicked calculator button " + button);
-  }
-
-  public boolean findElement(SikuliElement sikuliElement) {
-    return super.findElement(sikuliElement);
   }
 }

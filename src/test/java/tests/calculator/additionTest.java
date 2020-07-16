@@ -1,6 +1,7 @@
 package tests.calculator;
 
 import static org.junit.Assert.assertTrue;
+import static resources.SikuliDesktop.FindElement;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -8,7 +9,6 @@ import org.sikuli.script.*;
 import org.junit.*;
 import resources.SikuliElement;
 import resources.SikuliSettings;
-import resources.calculator.pages.CalculatorPage;
 import resources.calculator.steps.CalculatorSteps;
 
 @RunWith(JUnit4.class)
@@ -31,16 +31,15 @@ public class additionTest {
   @Test
   public void testAddition() {
     ImagePath.setBundlePath(SikuliSettings.BASE_IMAGEPATH);
-
     CalculatorSteps calculatorSteps = new CalculatorSteps();
-    CalculatorPage calculatorPage = new CalculatorPage();
     boolean isOutcomeImageFound = false;
 
+    assertTrue("Unable to limit search to Calculator window", calculatorSteps.limitSearchToCalculatorWindow());
     assertTrue("Addition test failed during Given steps.", calculatorSteps.additionTestGivenSteps());
     assertTrue("Addition test failed during When steps.", calculatorSteps.additionTestWhenSteps());
 
-    SikuliElement additionTestOutcome = new SikuliElement("calculator/images/tests/addition_test_outcome.png");
-    isOutcomeImageFound = calculatorPage.findElement(additionTestOutcome);
+    SikuliElement additionTestOutcome = new SikuliElement("calculator/images/tests/addition_test_outcome.png", "1 + 2 = 3");
+    isOutcomeImageFound = FindElement(additionTestOutcome);
     assertTrue("Test outcome image not found",isOutcomeImageFound);
   }
 }
