@@ -1,4 +1,4 @@
-# sikuli-practice
+# sikuli-winappdriver-pageobject-demo
 
 Sikuli is a Java application that uses OpenCV and Java Robot to look for an image within a larger on-screen image and interact with it. This simplicity allows Sikuli to be used to automate almost anything - webpages, desktop applications, mobile phone apps, even games. As a result, however, one must create the structure to automate the application under test.
 
