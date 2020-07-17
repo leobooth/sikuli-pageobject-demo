@@ -4,16 +4,21 @@ import org.sikuli.script.Pattern;
 import org.sikuli.script.Region;
 
 // the window is the app window in which to locate images
-// the sections of the actual window that can change should be masked
-// (image sections outside the window frame should be covered with black pixels)
 // see: https://docs.microsoft.com/en-us/windows/win32/uxguide/visual-index
 public class SikuliWindow extends Region {
 
   private SikuliElement window;
 
-  public SikuliWindow(String windowFrameImagePath, String description) {
-    Pattern maskedPattern = new Pattern(windowFrameImagePath).mask();
-    this.window = new SikuliElement(maskedPattern, description);
+  // sections of a window image that may change during a test (such as version numbers) should be masked
+  public SikuliWindow(String imagePath, String description, boolean isImageMasked) {
+    Pattern pattern;
+    if(isImageMasked) {
+      pattern = new Pattern(imagePath).mask();
+    } else {
+      pattern = new Pattern(imagePath);
+    }
+
+    this.window = new SikuliElement(pattern, description);
   }
 
   public SikuliElement getWindow() {

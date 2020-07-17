@@ -24,7 +24,7 @@ public class additionTest {
     calculatorApp = App.open("c://Windows//System32//calc.exe");
   }
 
-  @After
+  @AfterClass
   public static void teardownAdditionTest() {
     calculatorApp.close(); //TODO: use WinAppDriver to open and close the app?
   }
@@ -39,7 +39,7 @@ public class additionTest {
     assertTrue("Addition test failed during Given steps.", calculatorSteps.additionTestGivenSteps());
     assertTrue("Addition test failed during When steps.", calculatorSteps.additionTestWhenSteps());
 
-    SikuliElement additionTestOutcome = new SikuliElement("calculator/images/tests/addition_test_outcome.png", "1 + 2 = 3");
+    SikuliElement additionTestOutcome = new SikuliElement("calculator/images/assertions/addition_test_outcome.png", "1 + 2 = 3");
     isOutcomeImageFound = FindElement(additionTestOutcome);
     assertTrue("Test outcome image not found",isOutcomeImageFound);
   }

@@ -7,7 +7,10 @@ import resources.calculator.pages.CalculatorPage;
 
 public class CalculatorSteps {
 
-  public SikuliWindow calculatorWindow = new SikuliWindow("calculator/images/ui/calculator_window.png","Calculator window, standard size");
+  public SikuliWindow calculatorWindow = new SikuliWindow(
+          "calculator/images/ui/calculator_window.png",
+          "Calculator window, standard size",
+          true);
   public CalculatorPage calculatorPage = new CalculatorPage();
 
   public boolean limitSearchToCalculatorWindow() {
@@ -34,6 +37,7 @@ public class CalculatorSteps {
       calculatorPage.clickButton(2);
       isSuccessful = true;
     } catch (SikuliException e) {
+      System.out.println(e.getMessage());
       isSuccessful = false;
     }
 
@@ -48,6 +52,7 @@ public class CalculatorSteps {
       calculatorPage.clickButton("=");
       isSuccessful = true;
     } catch (SikuliException e) {
+      System.out.println(e.getMessage());
       isSuccessful = false;
     }
 
