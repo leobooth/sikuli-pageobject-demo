@@ -35,7 +35,8 @@ public class additionTest {
     CalculatorSteps calculatorSteps = new CalculatorSteps();
     boolean isOutcomeImageFound = false;
 
-    assertTrue("Unable to limit search to Calculator window", calculatorSteps.limitSearchToCalculatorWindow());
+    // FIXME: the calculator mask is sensitive to screen resolution. Do not use it until SikuliElement can search between several image sizes.
+    //assertTrue("Unable to limit search to Calculator window", calculatorSteps.limitSearchToCalculatorWindow());
     assertTrue("Addition test failed during Given steps.", calculatorSteps.additionTestGivenSteps());
     assertTrue("Addition test failed during When steps.", calculatorSteps.additionTestWhenSteps());
 

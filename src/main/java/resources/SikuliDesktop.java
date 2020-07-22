@@ -34,10 +34,9 @@ public class SikuliDesktop {
 
     try {
       match = DESKTOP.find(window.getWindow().getPattern());
+      DESKTOP.setROI(match.getX(),match.getY(),match.getW(),match.getH());
     } catch (FindFailed e) {
       throw new SikuliException("Could not find window " + window.getWindow().getDescription());
     }
-
-    DESKTOP.setROI(match.getX(),match.getY(),match.getW(),match.getH());
   }
 }
