@@ -5,6 +5,8 @@ import resources.SikuliDesktop;
 import resources.SikuliWindow;
 import resources.calculator.pages.CalculatorPage;
 
+import static resources.SikuliDesktop.DESKTOP;
+
 public class CalculatorSteps {
 
   public SikuliWindow calculatorWindow = new SikuliWindow(
@@ -16,7 +18,7 @@ public class CalculatorSteps {
   public boolean limitSearchToCalculatorWindow() {
     boolean isSearchRegionLimited = false;
 
-    if(SikuliDesktop.FindElement(calculatorWindow.getWindow())) {
+    if (SikuliDesktop.FindElement(calculatorWindow.getWindow())) {
       try {
         SikuliDesktop.LimitSearchToWindow(calculatorWindow);
         isSearchRegionLimited = true;
@@ -36,6 +38,20 @@ public class CalculatorSteps {
       calculatorPage.clickButton("+");
       calculatorPage.clickButton(2);
       isSuccessful = true;
+    } catch (SikuliException e) {
+      System.out.println(e.getMessage());
+      isSuccessful = false;
+    }
+
+    return isSuccessful;
+  }
+
+  public boolean additionTestOcrGivenSteps() {
+    boolean isSuccessful = false;
+
+    try {
+      System.out.println("GIVEN the calculator result display area contains '0'");
+      isSuccessful =
     } catch (SikuliException e) {
       System.out.println(e.getMessage());
       isSuccessful = false;

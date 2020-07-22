@@ -43,7 +43,7 @@ public class additionTest {
 
     SikuliElement additionTestOutcome = new SikuliElement("calculator/images/assertions/addition_test_outcome.png", "1 + 2 = 3");
     isOutcomeImageFound = FindElement(additionTestOutcome);
-    assertTrue("Test outcome image not found",isOutcomeImageFound);
+    assertTrue("Test outcome image not found", isOutcomeImageFound);
   }
 
 //  @Test
