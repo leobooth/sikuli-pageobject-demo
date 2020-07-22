@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>qa.testing</groupId>
-  <artifactId>sikuli-practice</artifactId>
+  <artifactId>sikuli-pageobject-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>sikuli-practice</name>
+  <name>sikuli-pageobject-demo</name>
   <url>https://github.com/leobooth</url>
 
   <properties>
