@@ -1,24 +1,20 @@
 package resources.calculator.steps;
 
 import org.sikuli.script.SikuliException;
-import resources.SikuliDesktop;
+import resources.SikuliElement;
 import resources.SikuliWindow;
+import resources.SikuliPage;
 import resources.calculator.pages.CalculatorPage;
 
 public class CalculatorSteps {
-
-  public SikuliWindow calculatorWindow = new SikuliWindow(
-          "calculator/images/ui/calculator_window.png",
-          "Calculator window, standard size",
-          true);
   public CalculatorPage calculatorPage = new CalculatorPage();
 
   public boolean limitSearchToCalculatorWindow() {
     boolean isSearchRegionLimited = false;
 
-    if(SikuliDesktop.FindElement(calculatorWindow.getWindow())) {
+    if (SikuliPage.FindElement(calculatorPage.getCalculatorWindow().getWindow())) {
       try {
-        SikuliDesktop.LimitSearchToWindow(calculatorWindow);
+        SikuliWindow.LimitSearchToWindow(calculatorPage.getCalculatorWindow());
         isSearchRegionLimited = true;
       } catch (SikuliException e) {
         isSearchRegionLimited = false;
@@ -59,4 +55,14 @@ public class CalculatorSteps {
     return isSuccessful;
   }
 
+  public boolean additionTestThenSteps() {
+    SikuliElement additionTestOutcome = new SikuliElement(
+        "calculator/images/assertions/display_shows_3.png",
+        "1 + 2 = 3");
+    return SikuliPage.FindElement(additionTestOutcome);
+  }
+
+  public boolean additionTestOcrThenSteps() {
+    return false;
+  }
 }

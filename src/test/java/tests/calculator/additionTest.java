@@ -1,14 +1,12 @@
 package tests.calculator;
 
 import static org.junit.Assert.assertTrue;
-import static resources.SikuliDesktop.FindElement;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.sikuli.script.*;
 import org.junit.*;
 import resources.SikuliApp;
-import resources.SikuliElement;
 import resources.SikuliSettings;
 import resources.calculator.steps.CalculatorSteps;
 
@@ -22,7 +20,7 @@ public class additionTest {
 
   @BeforeClass
   public static void setupAdditionTest() {
-    calculatorApp = new SikuliApp("c://Windows//System32//calc.exe","Calculator");
+    calculatorApp = new SikuliApp("c://Windows//System32//calc.exe", "Calculator");
   }
 
   @AfterClass
@@ -34,28 +32,16 @@ public class additionTest {
   public void testAddition() {
     ImagePath.setBundlePath(SikuliSettings.BASE_IMAGEPATH);
     CalculatorSteps calculatorSteps = new CalculatorSteps();
-    boolean isOutcomeImageFound = false;
 
     // FIXME: check the calculator mask image. different Calculator app versions?
     //assertTrue("Unable to limit search to Calculator window", calculatorSteps.limitSearchToCalculatorWindow());
-    assertTrue("Addition test failed during Given steps.", calculatorSteps.additionTestGivenSteps());
+
+    // GIVEN I press the '1', '+', and '2' buttons
+    // WHEN I press the '=' button
+    // THEN the display shows '1 + 2 = 3'
+    assertTrue("Addition test failed during Given steps.",
+        calculatorSteps.additionTestGivenSteps());
     assertTrue("Addition test failed during When steps.", calculatorSteps.additionTestWhenSteps());
-
-    SikuliElement additionTestOutcome = new SikuliElement("calculator/images/assertions/addition_test_outcome.png", "1 + 2 = 3");
-    isOutcomeImageFound = FindElement(additionTestOutcome);
-    assertTrue("Test outcome image not found",isOutcomeImageFound);
+    assertTrue("Test outcome image not found", calculatorSteps.additionTestThenSteps());
   }
-
-//  @Test
-//  public void testAdditionOCR() {
-//    ImagePath.setBundlePath(SikuliSettings.BASE_IMAGEPATH);
-//    CalculatorSteps calculatorSteps = new CalculatorSteps();
-//    boolean isOutcomeImageFound = false;
-//
-//    assertTrue("Unable to limit search to Calculator window", calculatorSteps.limitSearchToCalculatorWindow());
-//    assertTrue("Addition test failed during Given steps.", calculatorSteps.additionTestGivenSteps());
-//    assertTrue("Addition test failed during When steps.", calculatorSteps.additionTestWhenSteps());
-//
-//
-//  }
 }
