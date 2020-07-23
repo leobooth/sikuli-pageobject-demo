@@ -1,26 +1,20 @@
 package resources.calculator.steps;
 
 import org.sikuli.script.SikuliException;
-import resources.SikuliDesktop;
+import resources.SikuliElement;
 import resources.SikuliWindow;
+import resources.SikuliPage;
 import resources.calculator.pages.CalculatorPage;
 
-import static resources.SikuliDesktop.DESKTOP;
-
 public class CalculatorSteps {
-
-  public SikuliWindow calculatorWindow = new SikuliWindow(
-          "calculator/images/ui/calculator_window.png",
-          "Calculator window, standard size",
-          true);
   public CalculatorPage calculatorPage = new CalculatorPage();
 
   public boolean limitSearchToCalculatorWindow() {
     boolean isSearchRegionLimited = false;
 
-    if (SikuliDesktop.FindElement(calculatorWindow.getWindow())) {
+    if (SikuliPage.FindElement(calculatorPage.getCalculatorWindow().getWindow())) {
       try {
-        SikuliDesktop.LimitSearchToWindow(calculatorWindow);
+        SikuliWindow.LimitSearchToWindow(calculatorPage.getCalculatorWindow());
         isSearchRegionLimited = true;
       } catch (SikuliException e) {
         isSearchRegionLimited = false;
@@ -47,17 +41,13 @@ public class CalculatorSteps {
   }
 
   public boolean additionTestOcrGivenSteps() {
-    boolean isSuccessful = false;
-
-    try {
-      System.out.println("GIVEN the calculator result display area contains '0'");
-      isSuccessful =
-    } catch (SikuliException e) {
-      System.out.println(e.getMessage());
-      isSuccessful = false;
+    System.out.println("GIVEN the calculator result display area contains '0'");
+    String displayAreaText = calculatorPage.getTextFromDisplayArea();
+    if(displayAreaText.equals("0")) {
+      return true;
+    } else {
+      return false;
     }
-
-    return isSuccessful;
   }
 
   public boolean additionTestWhenSteps() {
@@ -75,4 +65,14 @@ public class CalculatorSteps {
     return isSuccessful;
   }
 
+  public boolean additionTestThenSteps() {
+    SikuliElement additionTestOutcome = new SikuliElement(
+        "calculator/images/assertions/display_shows_3.png",
+        "1 + 2 = 3");
+    return SikuliPage.FindElement(additionTestOutcome);
+  }
+
+  public boolean additionTestOcrThenSteps() {
+    return false;
+  }
 }

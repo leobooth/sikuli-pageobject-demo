@@ -3,12 +3,14 @@ package resources.calculator.pages;
 import org.sikuli.script.SikuliException;
 import resources.SikuliElement;
 import resources.SikuliPage;
-
-import static resources.SikuliDesktop.DESKTOP;
-import static resources.SikuliDesktop.FindElement;
+import resources.SikuliWindow;
 
 public class CalculatorPage extends SikuliPage {
 
+  public SikuliWindow calculatorWindow = new SikuliWindow(
+      "calculator/images/ui/calculator_window.png",
+      "Calculator window, standard size",
+      true);
   SikuliElement displayArea = new SikuliElement ("calculator/images/ui/display_area.png", "display area");
   SikuliElement button1 = new SikuliElement("calculator/images/ui/button_1.png", "button 1");
   SikuliElement button2 = new SikuliElement("calculator/images/ui/button_2.png", "button 2");
@@ -52,7 +54,11 @@ public class CalculatorPage extends SikuliPage {
     System.out.println("clicked calculator button " + button);
   }
 
-  public String getDisplayText() {
-    FindElement(displayArea)
+  public String getTextFromDisplayArea() {
+    return getText(displayArea);
+  }
+
+  public SikuliWindow getCalculatorWindow() {
+    return calculatorWindow;
   }
 }

@@ -10,7 +10,7 @@ public class SikuliElement {
   public SikuliElement(String imagePath, String description) {
     this.imagePath = imagePath;
     this.pattern = new Pattern(imagePath).similar(SikuliSettings.MIN_SIMILARITY).targetOffset(0, 0);
-    this.description = "";
+    this.description = description;
   }
 
   public SikuliElement(Pattern pattern, String description) {

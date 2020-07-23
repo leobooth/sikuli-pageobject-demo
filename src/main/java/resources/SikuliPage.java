@@ -18,4 +18,27 @@ public abstract class SikuliPage extends Region {
       throw new SikuliException("unable to click element represented by image: " + sikuliElement.getPattern().getFilename());
     }
   }
+
+  public static boolean FindElement(SikuliElement sikuliElement) {
+    Match match;
+
+    try {
+      match = DESKTOP.find(sikuliElement.getPattern());
+      return true;
+    } catch (SikuliException e) {
+      return false;
+    }
+  }
+
+  protected String getText(SikuliElement sikuliElement) {
+    String textFromRegion;
+    try {
+      Match match = DESKTOP.find(sikuliElement.getPattern());
+      System.out.println(match.getScore());
+      textFromRegion = match.getText();
+      return textFromRegion;
+    } catch (SikuliException e) {
+      return "";
+    }
+  }
 }
