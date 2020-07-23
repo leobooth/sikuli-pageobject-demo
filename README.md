@@ -13,11 +13,9 @@ A typical Windows Desktop application has the following structure (see https://d
 To make testing Windows desktop apps easier, this repository provides classes with a similar structure:
 1. **SikuliDesktop**: a single Desktop on which the application appears
 1. **Screen**: a pre-existing Sikuli class which simulates a computer monitor
-1. **App**: a pre-existing Sikuli class used to open, manage, and close applications
-    1. may augment App with WinAppDriver app management, which is more reliable
-1. **SikuliWindow**: one or more windows, each containing an image used to find the window on the Desktop
-    1. may augment SikuliWindow with WinAppDriver window methods
-1. **SikuliPage**: one or more pages that contain elements (similar to a traditional WebDriver PageObject)
+1. **SikuliApp**: a class used to open and manage application connections and focus windows
+1. **SikuliWindow**: one or more windows that can be used to restrict the image search area
+1. **SikuliPage**: one or more pages displayed in a window that contain elements (similar to a traditional WebDriver PageObject)
 1. **SikuliElement**: one or more elements that contain images used to drive UI interactions
 
 
